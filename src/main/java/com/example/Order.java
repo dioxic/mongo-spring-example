@@ -1,20 +1,25 @@
 package com.example;
 
+import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
+
+@Data
 @Document
 public class Order {
 
     @Id
-    public ObjectId _id;
+    private ObjectId id;
 
-    public Integer orderId;
+    @NotNull
+    private Integer orderId;
 
-    public String status;
+    private String status;
 
-    public String details;
+    private String details;
 
     public Order() {}
 
@@ -24,12 +29,4 @@ public class Order {
         this.details = details;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId=" + orderId +
-                ", status='" + status + '\'' +
-                ", details='" + details + '\'' +
-                '}';
-    }
 }
